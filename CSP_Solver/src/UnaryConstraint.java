@@ -16,9 +16,9 @@ public class UnaryConstraint<T> implements Constraint {
 
     @Override
     public boolean satisfiedWith(Assignment theAssignment) {
-        if (!theAssignment.assignments.containsKey(theVariable))
+        if (!theAssignment.getAssignments().containsKey(theVariable))
             return false;
         else
-            return theAssignment.assignments.get(theVariable).equals(value);
+            return theAssignment.getAssignments().get(theVariable).equals(value);
     }
 }

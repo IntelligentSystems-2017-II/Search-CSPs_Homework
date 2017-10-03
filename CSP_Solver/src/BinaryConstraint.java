@@ -30,17 +30,17 @@ public class BinaryConstraint<T> implements Constraint {
     public boolean satisfiedWith(Assignment theAssignment) {
        // for(Variable v: scope)
          //   System.out.println("en binyari: " +v.getName());
-        if (!theAssignment.assignments.containsKey(scope.get(0))
-                || !theAssignment.assignments.containsKey(scope.get(1))) {
+        if (!theAssignment.getAssignments().containsKey(scope.get(0))
+                || !theAssignment.getAssignments().containsKey(scope.get(1))) {
             return true;
         }
-        else if(theAssignment.assignments.containsKey(scope.get(0))
-                 &&theAssignment.assignments.containsKey(scope.get(1))){
-            if(theAssignment.assignments.get(scope.get(0)).equals(valueVar1))
-                return theAssignment.assignments.get(scope.get(1)).equals(valueVar2);
+        else if(theAssignment.getAssignments().containsKey(scope.get(0))
+                 && theAssignment.getAssignments().containsKey(scope.get(1))){
+            if(theAssignment.getAssignments().get(scope.get(0)).equals(valueVar1))
+                return theAssignment.getAssignments().get(scope.get(1)).equals(valueVar2);
 
-            if(theAssignment.assignments.get(scope.get(1)).equals(valueVar2))
-                return theAssignment.assignments.get(scope.get(0)).equals(valueVar1);
+            if(theAssignment.getAssignments().get(scope.get(1)).equals(valueVar2))
+                return theAssignment.getAssignments().get(scope.get(0)).equals(valueVar1);
 
             return true;
 

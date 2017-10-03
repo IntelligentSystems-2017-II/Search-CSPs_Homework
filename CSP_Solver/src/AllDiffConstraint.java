@@ -25,8 +25,8 @@ public class AllDiffConstraint<T> implements Constraint {
     public boolean satisfiedWith(Assignment theAssignment) {
         List<T> values = new ArrayList<>(scope.size());
         for(Variable var: scope){
-            if(theAssignment.assignments.get(var) != null)
-                values.add((T) theAssignment.assignments.get(var));
+            if(theAssignment.getAssignments().get(var) != null)
+                values.add((T) theAssignment.getAssignments().get(var));
         }
 
         for(int i = 0; i < values.size(); i++){

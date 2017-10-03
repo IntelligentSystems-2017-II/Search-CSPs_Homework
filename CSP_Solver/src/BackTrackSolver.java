@@ -1,8 +1,8 @@
 import java.util.List;
 
 public class BackTrackSolver {
-    public Assignment solve(Problem csp) {
-        return recursiveBackTrackingSearch(csp, new Assignment());
+    public Assignment solve(Problem csp, Assignment assignment) {
+            return recursiveBackTrackingSearch(csp, assignment);
     }
 
     private Assignment recursiveBackTrackingSearch(Problem csp,
@@ -16,21 +16,11 @@ public class BackTrackSolver {
                 assignment.setAssignment(var, value);
                 //fireStateChanged(assignment, csp);
                 if (assignment.isConsistent(csp.getConstraints(var))) {
-                    //DomainRestoreInfo info = inference(var, assignment, csp);
-                    //if (!info.isEmpty())
-                      //  fireStateChanged(csp);
-                    //if (!info.isEmptyDomainFound()) {
-                      //  result = recursiveBackTrackingSearch(csp, assignment);
-                        //if (result != null)
-                          //  break;
 
-                    //assignment.setAssignment(var, value);
                     result = recursiveBackTrackingSearch(csp, assignment);
                     if(result != null){
                         break;
                     }
-                    //assignment.removeAssignment(var);
-                   // info.restoreDomains(csp);
                 }
                 assignment.removeAssignment(var);
             }

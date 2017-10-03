@@ -8,10 +8,16 @@ public class Main {
 
 
         BackTrackSolver solver = new BackTrackSolver();
-        theAssignment = solver.solve(theProblem);
+        theAssignment = solver.solve(theProblem, theAssignment);
 
         System.out.println(theAssignment.toString());
 
+        /*Taxis tp = new Taxis();
+        Assignment theAssignment1 = new Assignment();
+        theAssignment1 = solver.solve(tp);
+
+        System.out.println(theAssignment1.toString());
+*/
         /*
         Variable v = theProblem.variables.get(5);
         Variable v1 = theProblem.variables.get(21);

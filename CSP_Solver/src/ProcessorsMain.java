@@ -17,6 +17,7 @@ public class ProcessorsMain {
         HashMap<Variable, Variable> binaryConstraintsEx  = new HashMap<>();
         HashMap<HashMap<Variable, Variable>, List<String>> binaryNotSimul = new HashMap<>();
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        //BufferedReader bf = new BufferedReader(new FileReader("in.txt"));
         HashMap<String, Variable> varNames = new HashMap<>();
 
 
@@ -42,10 +43,13 @@ public class ProcessorsMain {
         System.out.println("Ingrese la cantidad de procesadores");
         m = scanner.nextInt();
         processors = new ArrayList<>(m);
+        System.out.println(m + " procesaroes!");
 
         System.out.println("Ingrese los valores de los procesadores");
         for(int i = 0; i < m; i++)
             processors.add(scanner.next());
+        for(String s: processors)
+            System.out.println("procesor:" + s);
 
         for(String s: tasks)
             varNames.put(s, new Variable(s, processors));
@@ -53,14 +57,19 @@ public class ProcessorsMain {
 
         System.out.println("Ingrese cantidad de restricciones unarias inclusivas");
         int qr = scanner.nextInt();
+        System.out.println("cantidad de unarias inclu" + qr);
         String line;
         String[] splited;
         List<String> values;
         for(int i  = 1; i <= qr; i++){
 
-            //System.out.println("Ingrese la restriccion");
-            line = bf.readLine();
-            //System.out.println(line);
+            System.out.println("Ingrese la restriccion");
+            //line = bf.readLine();
+
+            line = scanner.nextLine();
+            line = scanner.nextLine();
+            System.out.println(line.length());
+            System.out.println("the line:"+ line);
             splited = line.split(" ");
             //System.out.println(splited.length);
             values = new ArrayList<>(splited.length-1);
@@ -73,10 +82,14 @@ public class ProcessorsMain {
 
         System.out.println("Ingrese cantidad de restricciones unarias exclusivas");
         qr = scanner.nextInt();
-
+        System.out.println("cantidad de unarias exclu " + qr);
+        scanner.nextLine();
         for(int i  = 1; i <= qr; i++){
-            System.out.println("Ingrese la restriccion");
-            line = bf.readLine();
+            //System.out.println("Ingrese la restriccion");
+            //line = bf.readLine();
+
+            line = scanner.nextLine();
+            System.out.println("the line:"+ line);
             splited = line.split(" ");
             values = new ArrayList<>(splited.length-1);
 
@@ -104,10 +117,15 @@ public class ProcessorsMain {
         System.out.println("Ingrese cantidad de restricciones binarias no simultaneas");
         qr = scanner.nextInt();
 
-
+        System.out.println("simultaneas: " + qr);
         HashMap<Variable, Variable> vars = new HashMap<>();
+
+        if(scanner.hasNextLine())
+            scanner.nextLine();
         for(int i  = 1; i <= qr; i++){
-            splited = bf.readLine().split(" ");
+            line = scanner.nextLine();
+            //splited = bf.readLine().split(" ");
+            splited = line.split(" ");
             vars.put(varNames.get(splited[0]), varNames.get(splited[1]));
 
             values = new ArrayList<>();

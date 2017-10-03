@@ -274,6 +274,7 @@ public class HousesProblem extends Problem {
         }
 
 
+
         //green must be on the right of the ivory house
         for(int i = 3; i <=4; i++){
             constraints.add(new NextHouseConstraint<>(
@@ -308,6 +309,26 @@ public class HousesProblem extends Problem {
             j++;
         }
 
+        /*---*/
+        //Ukranian second
+        j = 25;
+        for(int i = 10; i <= 14; i++){
+            constraints.add(new BinaryConstraint<>(variables.get(i), variables.get(j),
+                    variables.get(i).getDomain().get(4), variables.get(j).getDomain().get(1),
+                    "Ukranian 2nd house. "
+            ));
+            j++;
+        }
+
+        j = 5;
+        for(int i = 10; i <= 14; i++){
+            constraints.add(new BinaryConstraint<>(variables.get(i), variables.get(j),
+                    variables.get(i).getDomain().get(4), variables.get(j).getDomain().get(3),
+                    "Ukranian owns the horse"
+            ));
+            j++;
+        }
+         /*-------*/
         System.out.println(constraints.size());
         List<Constraint> relatedConstrains;
 
@@ -320,6 +341,6 @@ public class HousesProblem extends Problem {
             varConst.put(var, relatedConstrains);
         }
 
-        //------- Now the clues: Constraints
+        //------- |clues: Constraints
     }
 }
